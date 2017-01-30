@@ -1,15 +1,39 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from api.serializers import *
-from api.models import customer, paymenttype, product
+from api.models import customer, paymenttype, product, order, orderproduct
+
+
+class OrderProductViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Orders to be viewed or edited.
+    """
+    queryset = orderproduct.OrderProduct.objects.all()
+    serializer_class = OrderProductSerializer
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Orders to be viewed or edited.
+    """
+    queryset = order.Order.objects.all()
+    serializer_class = OrderSerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows PaymentTypes to be viewed or edited.
+    API endpoint that allows Products to be viewed or edited.
     """
     queryset = product.Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class ProductTypeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows ProductTypes to be viewed or edited.
+    """
+    queryset = product.ProductType.objects.all()
+    serializer_class = ProductTypeSerializer
 
 
 class PaymentTypeViewSet(viewsets.ModelViewSet):

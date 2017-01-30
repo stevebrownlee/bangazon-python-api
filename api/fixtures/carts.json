@@ -1,0 +1,18 @@
+[
+  {
+    "model": "api.orderproduct",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "product": 2
+    }
+  },
+  {
+    "model": "api.orderproduct",
+    "pk": 2,
+    "fields": {
+      "order": 2,
+      "product": 1
+    }
+  }
+]

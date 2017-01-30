@@ -1,0 +1,88 @@
+[
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "administrator"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "customer"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$iLSiJnYjaEpz$vTxywgnS+g9qpIwDY5P4wBkQs9sg0XTRcCJvaDEFIEE=",
+      "last_login": "2017-01-30T18:35:32.100Z",
+      "is_superuser": false,
+      "username": "joe",
+      "first_name": "Joe",
+      "last_name": "Shepherd",
+      "email": "joe@joe.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-01-30T18:35:32.100Z",
+      "groups": [
+        2
+      ],
+      "user_permissions": [
+        
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$iLSiJnYjaEpz$vTxywgnS+g9qpIwDY5P4wBkQs9sg0XTRcCJvaDEFIEE=",
+      "last_login": "2017-01-30T18:35:32.100Z",
+      "is_superuser": true,
+      "username": "steve",
+      "first_name": "Steve",
+      "last_name": "Brownlee",
+      "email": "po@po.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2017-01-30T18:35:32.100Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": [
+        
+      ]
+    }
+  },
+  {
+    "model": "api.customer",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "created": "2017-01-30T18:35:32.105Z",
+      "first_name": "Joe",
+      "last_name": "Shepherd",
+      "street_address": "test",
+      "city": "test",
+      "state": "ME",
+      "zipcode": "11111"
+    }
+  },
+  {
+    "model": "api.customer",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "created": "2017-01-30T18:35:32.105Z",
+      "first_name": "Steve",
+      "last_name": "Brownlee",
+      "street_address": "test",
+      "city": "test",
+      "state": "ME",
+      "zipcode": "11111"
+    }
+  }
+]

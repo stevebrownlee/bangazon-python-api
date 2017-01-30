@@ -1,0 +1,22 @@
+[
+  {
+    "model": "api.order",
+    "pk": 1,
+    "fields": {
+      "customer": 1,
+      "payment_type": null,
+      "created": "2017-01-30T18:35:32.100Z",
+      "processed": null
+    }
+  },
+  {
+    "model": "api.order",
+    "pk": 2,
+    "fields": {
+      "customer": 2,
+      "payment_type": null,
+      "created": "2017-01-30T18:35:32.100Z",
+      "processed": null
+    }
+  }
+]

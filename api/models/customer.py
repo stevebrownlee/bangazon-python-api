@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -16,3 +17,5 @@ class Customer(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+

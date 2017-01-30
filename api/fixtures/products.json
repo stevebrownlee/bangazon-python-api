@@ -1,0 +1,47 @@
+[
+  {
+    "model": "api.producttype",
+    "pk": 1,
+    "fields": {
+      "title": "Sports Equipment"
+    }
+  },
+  {
+    "model": "api.producttype",
+    "pk": 2,
+    "fields": {
+      "title": "Electronics"
+    }
+  },
+  {
+    "model": "api.producttype",
+    "pk": 3,
+    "fields": {
+      "title": "Housewares"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 1,
+    "fields": {
+      "customer": 1,
+      "producttype": 1,
+      "title": "Bicycle",
+      "description": "A bike",
+      "price": 75.00,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "customer": 2,
+      "producttype": 2,
+      "title": "iPad",
+      "description": "2015 iPad 2",
+      "price": 102.00,
+      "quantity": 1
+    }
+  }
+]
