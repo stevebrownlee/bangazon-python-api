@@ -1,15 +1,15 @@
 from django.db import models
-from . import customer, paymenttype
+from . import customer_model, paymenttype_model
 
 
 class Order(models.Model):
     customer = models.ForeignKey(
-      customer.Customer, 
+      customer_model.Customer, 
       on_delete=models.CASCADE,
       related_name='orders'
     )
     payment_type = models.ForeignKey(
-      paymenttype.PaymentType, 
+      paymenttype_model.PaymentType, 
       on_delete=models.DO_NOTHING,
       blank=True,
       null=True

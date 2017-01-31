@@ -1,5 +1,5 @@
 from django.db import models
-from .customer import Customer
+from .customer_model import Customer
 
 
 class PaymentType(models.Model):

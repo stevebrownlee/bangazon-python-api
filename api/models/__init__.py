@@ -1,1 +1,1 @@
-pass
+__all__ = ["customer_model", "order_model", "orderproduct_model", "paymenttype_model", "product_model", "producttype_model"]

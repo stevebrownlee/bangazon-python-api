@@ -1,0 +1,1 @@
+__all__ = ["customer_view", "order_view", "payment_view", "product_view",]
