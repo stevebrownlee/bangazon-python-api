@@ -20,6 +20,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('id', 'url', 'name')
 
+
 class RestrictedCustomerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:

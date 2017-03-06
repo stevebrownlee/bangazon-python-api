@@ -1,1 +1,1 @@
-__all__ = ["customer_serializer", "order_serializer", "payment_serializer", "product_serializer"]
+__all__ = ["customer_serializer", "order_serializer", "payment_serializer", "product_serializer", "login_serializer"]

@@ -16,5 +16,6 @@ router.register(r'product_types', product_view.ProductTypeViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^login$', customer_view.LoginView.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
