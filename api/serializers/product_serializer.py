@@ -11,9 +11,18 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    customer = customer_serializer.RestrictedCustomerSerializer(read_only=True)
+    # customer = customer_serializer.RestrictedCustomerSerializer(read_only=True)
 
     class Meta:
         model = product_model.Product
-        fields = ('id', 'url', 'customer', 'title', 'description', 'price', 'quantity')
-        depth = 1
+        fields = (
+            'id', 
+            'url', 
+            'customer', 
+            'producttype', 
+            'title', 
+            'description', 
+            'price', 
+            'quantity',
+        )
+        depth=1

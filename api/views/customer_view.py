@@ -3,10 +3,12 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth import logout, login, authenticate
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from api.serializers import *
-from api.models import *
+from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
+
+from api.serializers import *
+from api.models import *
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -30,8 +32,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class LoginView(generics.RetrieveAPIView):
     permission_classes = (AllowAny,)
-    serializer_class=login_serializer.LoginSerializer
-    queryset=User.objects.all()
 
     error_messages = {
         'invalid': "Invalid username or password",
@@ -39,27 +39,34 @@ class LoginView(generics.RetrieveAPIView):
     }
 
     def _error_response(self, message_key):
-        data = {
+        data = json.dumps({
             'success': False,
             'message': self.error_messages[message_key],
             'user_id': None,
-        }
+        })
 
+    @csrf_exempt
     def post(self,request):
+        permission_classes = (AllowAny,)
+
         req_body = json.loads(request.body.decode())
         username = req_body['username']
         password = req_body['password']
-        print(username, password)
         user = authenticate(username=username, password=password)
 
         success = False
         if user is not None:
             if user.is_active:
                 login(request, user)
-                success=True
+                data = json.dumps({
+                    'success': True,
+                    'username': user.username,
+                    'email': user.email,
+                })
+                return HttpResponse(data, content_type='application/json')
 
-        data = json.dumps({"success":success})
-        return HttpResponse(data, content_type='application/json')
+            return HttpResponse(self._error_response('disabled'), content_type='application/json')
+        return HttpResponse(self._error_response('invalid'), content_type='application/json')
 
 
 class GroupViewSet(viewsets.ModelViewSet):
