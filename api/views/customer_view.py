@@ -33,6 +33,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class LoginView(generics.RetrieveAPIView):
     permission_classes = (AllowAny,)
 
+
     error_messages = {
         'invalid': "Invalid username or password",
         'disabled': "Sorry, this account is suspended",
@@ -45,10 +46,7 @@ class LoginView(generics.RetrieveAPIView):
             'user_id': None,
         })
 
-    @csrf_exempt
     def post(self,request):
-        permission_classes = (AllowAny,)
-
         req_body = json.loads(request.body.decode())
         username = req_body['username']
         password = req_body['password']
