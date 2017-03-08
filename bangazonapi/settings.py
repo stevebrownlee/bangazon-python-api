@@ -38,13 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'api.apps.ApiConfig',
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'PAGE_SIZE': 10
 }
@@ -64,7 +68,6 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '127.0.0.1:8080'
 )
-CORS_ALLOW_CREDENTIALS=True
 
 ROOT_URLCONF = 'bangazonapi.urls'
 
