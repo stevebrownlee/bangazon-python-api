@@ -6,15 +6,15 @@ from . import customer_serializer
 
 class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = producttype_model.ProductType
+        model = ProductType
         fields = ('id', 'title',)
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
-    # customer = customer_serializer.RestrictedCustomerSerializer(read_only=True)
+    customer = customer_serializer.CustomerSerializer(read_only=True)
 
     class Meta:
-        model = product_model.Product
+        model = Product
         fields = (
             'id', 
             'url', 
@@ -25,4 +25,4 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             'price', 
             'quantity',
         )
-        depth=1
+        # depth=1

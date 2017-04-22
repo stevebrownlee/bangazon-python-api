@@ -5,12 +5,12 @@ from .producttype_model import ProductType
 
 class Product(models.Model):
     customer = models.ForeignKey(
-      Customer, 
+      'Customer', 
       on_delete=models.CASCADE,
       related_name='products'
     )
     producttype = models.ForeignKey(
-      ProductType, 
+      'ProductType', 
       on_delete=models.CASCADE,
       related_name='products'
     )
@@ -19,3 +19,5 @@ class Product(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=12)
     quantity = models.IntegerField()
 
+    def __str__(self):
+      return self.title

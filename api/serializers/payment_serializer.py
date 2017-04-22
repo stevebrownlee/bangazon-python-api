@@ -5,5 +5,5 @@ from api.models import *
 
 class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = paymenttype_model.PaymentType
-        fields = ('id', 'customer', 'account_number', 'provider')
+        model = PaymentType
+        fields = ('id', 'url', 'customer', 'account_number', 'provider')

@@ -8,14 +8,14 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Products to be viewed or edited.
     """
-    queryset = product_model.Product.objects.all()
-    serializer_class = product_serializer.ProductSerializer
+    queryset = Product.objects.all().order_by("-price")
+    serializer_class = ProductSerializer
 
 
 class ProductTypeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows ProductTypes to be viewed or edited.
     """
-    queryset = product_model.ProductType.objects.all()
-    serializer_class = product_serializer.ProductTypeSerializer
+    queryset = ProductType.objects.all().order_by("title")
+    serializer_class = ProductTypeSerializer
 

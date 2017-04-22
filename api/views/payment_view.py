@@ -8,5 +8,5 @@ class PaymentTypeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows PaymentTypes to be viewed or edited.
     """
-    queryset = paymenttype_model.PaymentType.objects.all()
-    serializer_class = payment_serializer.PaymentTypeSerializer
+    queryset = PaymentType.objects.all().order_by("provider")
+    serializer_class = PaymentTypeSerializer

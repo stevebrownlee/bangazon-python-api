@@ -4,7 +4,7 @@ from .customer_model import Customer
 
 class PaymentType(models.Model):
     customer = models.ForeignKey(
-      Customer, 
+      'Customer', 
       on_delete=models.CASCADE,
       related_name="payment_types",
       related_query_name="payment_type",

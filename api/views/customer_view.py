@@ -12,8 +12,8 @@ class CustomerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Customers to be viewed or edited.
     """
-    queryset = customer_model.Customer.objects.all().order_by('-created')
-    serializer_class = customer_serializer.CustomerSerializer
+    queryset = Customer.objects.all().order_by('-created')
+    serializer_class = CustomerSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -24,12 +24,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         if self.request.user.is_superuser:
-            return customer_serializer.RestrictedUserSerializer
-        return customer_serializer.UserSerializer 
+            return RestrictedUserSerializer
+        return UserSerializer 
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
     queryset = Group.objects.all()
-    serializer_class = customer_serializer.GroupSerializer
+    serializer_class = GroupSerializer

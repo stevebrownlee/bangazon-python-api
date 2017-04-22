@@ -24,7 +24,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class RestrictedCustomerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = customer_model.Customer
+        model = Customer
         fields = (
             'id', 
             'url', 
@@ -36,7 +36,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     products = serializers.HyperlinkedRelatedField(many=True, view_name='product-detail', read_only=True)
 
     class Meta:
-        model = customer_model.Customer
+        model = Customer
         fields = (
           'id', 
           'url', 
