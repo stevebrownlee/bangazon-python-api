@@ -23,9 +23,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
 
     def get_serializer_class(self):
-        if self.request.user.is_superuser:
+        if not self.request.user.is_superuser:
             return RestrictedUserSerializer
-        return UserSerializer 
+        return UserSerializer
+
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
@@ -33,3 +34,26 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

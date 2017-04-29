@@ -12,7 +12,7 @@ class OrderProductSerializer(serializers.HyperlinkedModelSerializer):
 class LineItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = OrderProduct
-        fields = ('order', 'product', )
+        fields = ('product', )
         depth = 1
 
 
@@ -21,4 +21,12 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'url', 'customer', 'payment_type', 'created', 'processed', 'line_items',)
+        fields = (
+            'id',
+            'url',
+            'customer',
+            'payment_type',
+            'created',
+            'processed',
+            'line_items',
+        )
