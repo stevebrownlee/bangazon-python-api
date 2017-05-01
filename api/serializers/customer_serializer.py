@@ -6,18 +6,24 @@ from api.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'groups',)
+        fields = (
+            'url',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'groups',
+        )
         extra_kwargs = {
             'is_admin': {'write_only': True},
-            'password': {'write_only': True}
+            'password': {'write_only': True},
         }
-        read_only_fields = ('is_staff', 'is_superuser', 'is_active', 'date_joined',)
-
-
-class RestrictedUserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'first_name', 'last_name')
+        read_only_fields = (
+            'is_staff',
+            'is_superuser',
+            'is_active',
+            'date_joined',
+        )
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

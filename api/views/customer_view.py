@@ -6,13 +6,18 @@ from django.core import serializers
 
 from rest_framework import viewsets, generics, mixins
 from rest_framework.response import Response
+from rest_framework.permissions import IsAdminUser
 
 from api.serializers import *
 from api.models import *
 
 
 class CustomerList(generics.ListCreateAPIView):
-    serializer_class = CustomerSerializer
+
+    def get_serializer_class(self):
+        if not self.request.user.is_superuser:
+            return RestrictedCustomerSerializer
+        return CustomerSerializer
 
     def get_queryset(self):
         """
@@ -54,11 +59,9 @@ class UserViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = User.objects.all().order_by('-date_joined')
+    permission_classes = (IsAdminUser,)
+    serializer_class = UserSerializer
 
-    def get_serializer_class(self):
-        if not self.request.user.is_superuser:
-            return RestrictedUserSerializer
-        return UserSerializer
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
