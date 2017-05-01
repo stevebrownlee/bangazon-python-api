@@ -6,7 +6,12 @@ from api.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'url', 'username', 'email', 'groups')
+        fields = ('url', 'first_name', 'last_name', 'email', 'groups',)
+        extra_kwargs = {
+            'is_admin': {'write_only': True},
+            'password': {'write_only': True}
+        }
+        read_only_fields = ('is_staff', 'is_superuser', 'is_active', 'date_joined',)
 
 
 class RestrictedUserSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,27 +31,45 @@ class RestrictedCustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
         fields = (
-            'id', 
-            'url', 
-            'first_name', 
-            'last_name', 
+            'id',
+            'url',
+            'first_name',
+            'last_name',
         )
 
+
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Customer
+        fields = (
+          'id',
+          'url',
+          'user',
+          'created',
+          'first_name',
+          'last_name',
+          'street_address',
+          'city',
+          'state',
+          'zipcode',
+        )
+
+
+class CustomerPanelSerializer(serializers.HyperlinkedModelSerializer):
     products = serializers.HyperlinkedRelatedField(many=True, view_name='product-detail', read_only=True)
 
     class Meta:
         model = Customer
         fields = (
-          'id', 
-          'url', 
-          'user', 
-          'created', 
-          'first_name', 
-          'last_name', 
-          'street_address', 
-          'city', 
-          'state', 
+          'id',
+          'url',
+          'created',
+          'first_name',
+          'last_name',
+          'street_address',
+          'city',
+          'state',
           'zipcode',
-          'products'
+          'products',
         )

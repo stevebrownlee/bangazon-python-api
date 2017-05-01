@@ -1,22 +1,21 @@
 from django.conf.urls import url, include
+from django.contrib import admin
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from api.views import *
 
-router = routers.DefaultRouter()
-router.register(r'users', customer_view.UserViewSet)
-router.register(r'groups', customer_view.GroupViewSet)
-router.register(r'customers', customer_view.CustomerViewSet)
-router.register(r'paymenttypes', payment_view.PaymentTypeViewSet)
-router.register(r'products', product_view.ProductViewSet)
-router.register(r'orders', order_view.OrderViewSet)
-router.register(r'line_items', order_view.OrderProductViewSet)
-router.register(r'product_types', product_view.ProductTypeViewSet)
-
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'^$', api_root),
+    url(r'^customers/$', CustomerList.as_view(), name="customer-list"),
+    url(r'^customers/(?P<pk>[0-9]+)/$', CustomerDetail.as_view(), name="customer-detail"),
+    url(r'^users/$', UserViewSet.as_view({'get': 'list', 'post': 'create'}), name="user-list"),
+    url(r'^users/(?P<pk>[0-9]+)/$', UserViewSet.as_view({'get': 'retrieve'}), name="user-detail"),
+    url(r'^groups/$', GroupViewSet.as_view({'get': 'list'}), name="group-list"),
+    url(r'^groups/(?P<pk>[0-9]+)/$', GroupViewSet.as_view({'get': 'retrieve'}), name="group-detail"),
     url(r'^api-token-auth/', obtain_auth_token),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^admin/', admin.site.urls),
 ]
+
