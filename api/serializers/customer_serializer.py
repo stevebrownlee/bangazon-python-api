@@ -6,7 +6,7 @@ from api.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'first_name', 'last_name', 'email', 'groups',)
+        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'groups',)
         extra_kwargs = {
             'is_admin': {'write_only': True},
             'password': {'write_only': True}
