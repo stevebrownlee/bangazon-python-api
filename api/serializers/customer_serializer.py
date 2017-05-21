@@ -39,8 +39,7 @@ class RestrictedCustomerSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'id',
             'url',
-            'first_name',
-            'last_name',
+            'user',
         )
 
 
@@ -53,8 +52,6 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
           'url',
           'user',
           'created',
-          'first_name',
-          'last_name',
           'street_address',
           'city',
           'state',

@@ -4,13 +4,23 @@ from .producttype_model import ProductType
 
 
 class Product(models.Model):
+    """The Product model represents something a Customer wants to sell
+
+        Fields:
+            customer - Customer
+            producttype - ProductType
+            title - CharField
+            description - CharField
+            price - Decimal
+            quantity - Integer
+    """
     customer = models.ForeignKey(
-      'Customer', 
+      'Customer',
       on_delete=models.CASCADE,
       related_name='products'
     )
     producttype = models.ForeignKey(
-      'ProductType', 
+      'ProductType',
       on_delete=models.CASCADE,
       related_name='products'
     )

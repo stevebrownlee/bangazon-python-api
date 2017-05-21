@@ -4,13 +4,21 @@ from .paymenttype_model import PaymentType
 
 
 class Order(models.Model):
+    """The Order model represents the shopping cart concept in Bangazon
+
+        Fields:
+            customer - Customer
+            payment_type - PaymentType
+            created - DateTime
+            processed = NullBoolean
+    """
     customer = models.ForeignKey(
-      'Customer', 
+      'Customer',
       on_delete=models.CASCADE,
       related_name='orders'
     )
     payment_type = models.ForeignKey(
-      'PaymentType', 
+      'PaymentType',
       on_delete=models.DO_NOTHING,
       blank=True,
       null=True
