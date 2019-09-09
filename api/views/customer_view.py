@@ -4,8 +4,11 @@ from django.http import HttpResponse
 from django.core import serializers
 import json
 
-from api.serializers import *
-from api.models import *
+from api.serializers import CustomerSerializer
+from api.serializers import RestrictedUserSerializer
+from api.serializers import UserSerializer
+from api.serializers import GroupSerializer
+from api.models import Customer
 
 
 class CustomerViewSet(viewsets.ModelViewSet):

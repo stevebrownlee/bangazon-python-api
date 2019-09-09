@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from api.models import *
+from api.models import Customer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,10 +26,10 @@ class RestrictedCustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
         fields = (
-            'id', 
-            'url', 
-            'first_name', 
-            'last_name', 
+            'id',
+            'url',
+            'first_name',
+            'last_name',
         )
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,15 +38,15 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
         fields = (
-          'id', 
-          'url', 
-          'user', 
-          'created', 
-          'first_name', 
-          'last_name', 
-          'street_address', 
-          'city', 
-          'state', 
+          'id',
+          'url',
+          'user',
+          'created',
+          'first_name',
+          'last_name',
+          'street_address',
+          'city',
+          'state',
           'zipcode',
           'products'
         )

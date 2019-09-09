@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from api.serializers import *
-from api.models import *
+from api.serializers import ProductTypeSerializer
+from api.serializers import ProductSerializer
+from api.models import Product
+from api.models import ProductType
 
 
 class ProductViewSet(viewsets.ModelViewSet):

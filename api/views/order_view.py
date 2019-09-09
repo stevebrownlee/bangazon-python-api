@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from api.serializers import *
-from api.models import *
+from api.serializers import OrderSerializer
+from api.serializers import OrderProductSerializer
+from api.models import OrderProduct
+from api.models import Order
 
 
 class OrderProductViewSet(viewsets.ModelViewSet):
