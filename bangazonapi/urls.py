@@ -1,7 +1,11 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
-from api.views import *
+from api.views import customer_view
+from api.views import payment_view
+from api.views import product_view
+from api.views import order_view
+from api.views import register_view
 
 router = routers.DefaultRouter()
 router.register(r'users', customer_view.UserViewSet)
